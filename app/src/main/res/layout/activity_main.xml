@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Boiler Control"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="clip_vertical|right|top"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_popup_sync" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/status"
+                android:layout_width="50pt"
+                android:layout_height="40pt"
+                android:layout_gravity="center_vertical"
+                android:enabled="true"
+                android:text="Boiler off"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="20pt"
+                android:layout_height="0pt" />
+
+            <Button
+                android:id="@+id/timer"
+                android:layout_width="50pt"
+                android:layout_height="40pt"
+                android:layout_gravity="center_vertical"
+                android:enabled="true"
+                android:text="Timer off"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0pt"
+            android:layout_height="20pt" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="#999C9E"
+            android:fontFamily="monospace"
+            android:scrollbars="vertical"
+            android:text="Status"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
