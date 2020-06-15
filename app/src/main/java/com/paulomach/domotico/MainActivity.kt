@@ -7,13 +7,16 @@ import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.os.StrictMode
+import android.text.Editable
 import android.text.format.Formatter
 import android.text.method.ScrollingMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
+import com.google.android.material.textfield.TextInputEditText
 
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -33,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private val textView by lazy { findViewById<TextView>(R.id.text) }
     private val timerButton by lazy { findViewById<Button>(R.id.timer) }
     private val statusButton by lazy { findViewById<Button>(R.id.status) }
+    private val urlText by lazy { findViewById<TextInputEditText>(R.id.url_config) }
+    private val checkBox by lazy { findViewById<CheckBox>(R.id.checkBox) }
     private var baseURL = String()
     private var timerState = String()
 
@@ -82,10 +87,16 @@ class MainActivity : AppCompatActivity() {
         val winfo = wf.connectionInfo as WifiInfo
 
         val ip = Formatter.formatIpAddress(winfo.ipAddress)
-        baseURL = if (ip.contains("168.86") || ip.contains("168.15")) {
-            "http://192.168.15.11:8080/"
+
+        if (checkBox.isChecked) {
+            baseURL = urlText.text.toString()
         } else {
-            "https://paulohome.hopto.org:8888/"
+            baseURL = if (ip.contains("168.86") || ip.contains("168.15")) {
+                "http://raspberrypi:8080/"
+            } else {
+                "https://paulohome.hopto.org:8888/"
+            }
+            urlText.text = Editable.Factory.getInstance().newEditable(baseURL)
         }
         textView.text = "Using endpoint as " + baseURL
     }
